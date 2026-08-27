@@ -1,729 +1,1071 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>GreenLeaf | Platos biodegradables</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f8f2;
-            color: #213525;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 8%;
-            background: rgba(15, 52, 25, 0.94);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .logo {
-            font-size: 29px;
-            font-weight: bold;
-            color: white;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #a8e063;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 28px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #a8e063;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 130px 8% 80px;
-            color: white;
-            background:
-                linear-gradient(
-                    110deg,
-                    rgba(8, 42, 19, 0.96),
-                    rgba(32, 91, 40, 0.70)
-                ),
-                url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=85");
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-content {
-            max-width: 720px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 9px 18px;
-            margin-bottom: 25px;
-            border-radius: 30px;
-            background: #a8e063;
-            color: #17351d;
-            font-weight: bold;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 8vw, 95px);
-            line-height: 0.95;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #a8e063;
-        }
-
-        .hero p {
-            max-width: 650px;
-            font-size: 20px;
-            line-height: 1.7;
-            color: #e4f0e2;
-            margin-bottom: 35px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #a8e063;
-            color: #17351d;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(168, 224, 99, 0.3);
-        }
-
-        .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: #174c25;
-        }
-
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 60px;
-        }
-
-        .section-title h2 {
-            font-size: 45px;
-            color: #174c25;
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            color: #667367;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .problem {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .problem-text h2 {
-            font-size: 43px;
-            color: #174c25;
-            margin-bottom: 20px;
-        }
-
-        .problem-text p {
-            color: #5f6c62;
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-
-        .problem-image {
-            min-height: 400px;
-            border-radius: 30px;
-            background: url("https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=1000&q=85");
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 20px 50px rgba(30, 70, 35, 0.15);
-        }
-
-        .benefits-section {
-            background: #eaf3e6;
-        }
-
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .benefit {
-            background: white;
-            padding: 35px 25px;
-            text-align: center;
-            border-radius: 22px;
-            box-shadow: 0 10px 30px rgba(30, 70, 35, 0.08);
-            transition: 0.3s;
-        }
-
-        .benefit:hover {
-            transform: translateY(-10px);
-        }
-
-        .benefit .icon {
-            font-size: 45px;
-            margin-bottom: 20px;
-        }
-
-        .benefit h3 {
-            color: #246333;
-            margin-bottom: 12px;
-        }
-
-        .benefit p {
-            color: #68736a;
-            line-height: 1.6;
-        }
-
-.product {
-    max-width: 1050px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    border-radius: 30px;
-    background: white;
-    box-shadow: 0 20px 50px rgba(30, 70, 35, 0.12);
-}
-
-.product-image {
-    width: 100%;
-    min-height: 400px;
-    background-image: url("https://i.ibb.co/v6jLqSjD/f04c5191-3613-451f-8a2d-afcf6f1f1a28.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-        .product-info {
-            padding: 55px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .product-info h3 {
-            font-size: 40px;
-            color: #174c25;
-            margin-bottom: 18px;
-        }
-
-        .product-info p {
-            color: #657066;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .price {
-            font-size: 38px;
-            font-weight: bold;
-            color: #39934b;
-            margin-bottom: 10px;
-        }
-
-        .price-description {
-            color: #7b857c;
-            margin-bottom: 25px;
-        }
-
-        .process {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .step {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            border-top: 5px solid #65ad54;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-        }
-
-        .number {
-            font-size: 40px;
-            font-weight: bold;
-            color: #b4d79c;
-            margin-bottom: 10px;
-        }
-
-        .step h3 {
-            color: #225a2d;
-            margin-bottom: 12px;
-        }
-
-        .step p {
-            color: #69746b;
-            line-height: 1.6;
-        }
-
-        .impact {
-            background: #174c25;
-            color: white;
-            text-align: center;
-        }
-
-        .impact h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .impact p {
-            max-width: 750px;
-            margin: auto;
-            color: #dcebd9;
-            font-size: 19px;
-            line-height: 1.8;
-        }
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 55px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 15px 45px rgba(30, 70, 35, 0.10);
-        }
-
-        .contact-box h2 {
-            font-size: 40px;
-            color: #174c25;
-            margin-bottom: 15px;
-        }
-
-        .contact-box p {
-            color: #68736a;
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        footer {
-            background: #0c2814;
-            color: #b9cbb9;
-            text-align: center;
-            padding: 30px;
-        }
-
-        footer strong {
-            color: #a8e063;
-        }
-
-        @media (max-width: 950px) {
-            .benefits,
-            .process {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .problem,
-            .product {
-                grid-template-columns: 1fr;
-            }
-
-            .problem-image {
-                min-height: 300px;
-            }
-
-            .product-image {
-                min-height: 350px;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-
-        @media (max-width: 600px) {
-            section {
-                padding: 75px 6%;
-            }
-
-            .benefits,
-            .process {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                text-align: center;
-            }
-
-            .hero-content {
-                margin: auto;
-            }
-
-            .buttons {
-                justify-content: center;
-            }
-
-            .hero h1 {
-                font-size: 55px;
-            }
-
-            .section-title h2 {
-                font-size: 35px;
-            }
-
-            .product-info {
-                padding: 35px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GreenLeaf: platos biodegradables elaborados a partir de hojas de plátano. Conoce el problema, nuestra solución, propuesta de valor, beneficios y cómo realizar pedidos.">
+  <meta name="theme-color" content="#173f25">
+  <title>GreenLeaf | Platos biodegradables</title>
+
+  <style>
+    :root {
+      --green-950: #0b2414;
+      --green-900: #12361d;
+      --green-800: #174c25;
+      --green-700: #246333;
+      --green-600: #39934b;
+      --green-500: #65ad54;
+      --leaf: #a8e063;
+      --cream: #f7faf4;
+      --soft: #eaf3e6;
+      --ink: #203225;
+      --muted: #68736a;
+      --white: #ffffff;
+      --line: rgba(23, 76, 37, 0.12);
+      --shadow: 0 18px 50px rgba(24, 74, 38, 0.10);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html { scroll-padding-top: 86px; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 3000;
+      transform: translateY(-160%);
+      background: var(--white);
+      color: var(--green-900);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 2000;
+      background: rgba(12, 40, 20, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-wrap {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: var(--white);
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      font-size: clamp(18px, 3vw, 23px);
+      font-weight: 800;
+      letter-spacing: .6px;
+      white-space: nowrap;
+    }
+
+    .brand-text span { color: var(--leaf); }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: .96;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible { color: var(--leaf); opacity: 1; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 15px;
+      border-radius: 999px;
+      background: var(--leaf);
+      color: var(--green-950);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* BUTTONS */
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 19px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 2px solid transparent;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn:focus-visible,
+    nav a:focus-visible,
+    .brand:focus-visible {
+      outline: 3px solid var(--leaf);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background: var(--leaf);
+      color: var(--green-950);
+      box-shadow: 0 8px 22px rgba(168,224,99,.20);
+    }
+
+    .btn-primary:hover { box-shadow: 0 12px 28px rgba(168,224,99,.28); }
+
+    .btn-light {
+      color: #fff;
+      border-color: rgba(255,255,255,.80);
+      background: transparent;
+    }
+
+    .btn-light:hover { background: #fff; color: var(--green-800); }
+
+    .btn-dark-outline {
+      color: var(--green-800);
+      border-color: var(--green-800);
+      background: transparent;
+    }
+
+    .btn-dark-outline:hover { background: var(--green-800); color: #fff; }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 110px 0 70px;
+      color: #fff;
+      background:
+        linear-gradient(120deg, rgba(7, 36, 17, .96), rgba(25, 81, 36, .76)),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      margin-bottom: 20px;
+      border-radius: 999px;
+      background: rgba(168, 224, 99, .14);
+      border: 1px solid rgba(168, 224, 99, .35);
+      color: #ecf9df;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: .96;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span { color: var(--leaf); }
+
+    .hero p {
+      max-width: 690px;
+      font-size: clamp(17px, 2.2vw, 20px);
+      color: #e6f0e4;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .hero-card {
+      justify-self: end;
+      width: min(100%, 360px);
+      padding: 16px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 30px 70px rgba(0,0,0,.20);
+    }
+
+    .hero-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 20px;
+      background: var(--green-700);
+    }
+
+    .hero-card-caption {
+      padding: 14px 5px 3px;
+      color: #eaf4e8;
+      font-size: 13px;
+    }
+
+    /* COMMON SECTION */
+    section { padding: 88px 0; }
+
+    .section-heading {
+      max-width: 780px;
+      margin: 0 auto 44px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      color: var(--green-600);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      color: var(--green-800);
+      font-size: clamp(34px, 5vw, 50px);
+      line-height: 1.05;
+      margin-bottom: 13px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* PROBLEMA + SOLUCIÓN */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 24px;
+    }
+
+    .info-card,
+    .solution-card,
+    .value-card,
+    .audience-card,
+    .evidence-card,
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .info-card { padding: 30px; }
+
+    .info-card h3,
+    .solution-card h3,
+    .value-card h3,
+    .audience-card h3,
+    .evidence-card h3 {
+      color: var(--green-800);
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .info-card p,
+    .solution-card p,
+    .value-card p,
+    .audience-card p,
+    .evidence-card p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .problem-list {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .problem-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 14px;
+      background: #f3f8f0;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin-top: 8px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+      background: var(--green-500);
+    }
+
+    .solution-card {
+      padding: 30px;
+      background: linear-gradient(145deg, #1b5628, #2c7a3c);
+      color: #fff;
+    }
+
+    .solution-card h3 { color: #fff; }
+    .solution-card p { color: #dcebd9; }
+
+    .solution-steps {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .solution-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      border-radius: 14px;
+    }
+
+    .solution-step strong { display: block; margin-bottom: 2px; }
+    .solution-step span { font-size: 14px; color: #e0f0dd; }
+
+    /* VALUE + AUDIENCE */
+    .soft-section { background: var(--soft); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .value-card,
+    .audience-card { padding: 30px; }
+
+    .value-highlight {
+      margin-top: 18px;
+      padding: 17px;
+      border-radius: 16px;
+      background: #f4faef;
+      border-left: 4px solid var(--green-500);
+      font-weight: 800;
+      color: var(--green-800);
+    }
+
+    .audience-tags {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #eef6e9;
+      color: var(--green-800);
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid rgba(23,76,37,.10);
+    }
+
+    /* BENEFITS */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .benefit {
+      padding: 26px 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 32px rgba(30,70,35,.07);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .benefit:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #eef7e9;
+      color: var(--green-700);
+      font-size: 25px;
+      margin-bottom: 17px;
+    }
+
+    .benefit h3 { color: var(--green-800); margin-bottom: 8px; font-size: 19px; }
+    .benefit p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    /* PRODUCT */
+    .product {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background: #fff;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .product-image {
+      min-height: 420px;
+      background: #dfeadd;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+
+    .product-info { padding: clamp(30px, 5vw, 58px); }
+
+    .product-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--green-600);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 900;
+    }
+
+    .product-info h3 {
+      color: var(--green-800);
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.03;
+      margin-bottom: 14px;
+    }
+
+    .product-info p { color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+
+    .price {
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--green-600);
+    }
+
+    .price-note { color: #7b857c; font-size: 14px; margin: 7px 0 24px; }
+
+    /* PROCESS */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px 21px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.05);
+    }
+
+    .step-number {
+      color: #b7d69e;
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 13px;
+    }
+
+    .step h3 { color: var(--green-800); margin-bottom: 8px; font-size: 19px; }
+    .step p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    /* EVIDENCE */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .evidence-card { overflow: hidden; }
+
+    .evidence-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      background: #deeadb;
+    }
+
+    .evidence-content { padding: 25px; }
+
+    .evidence-mini {
+      display: grid;
+      gap: 14px;
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .mini-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(30,70,35,.06);
+    }
+
+    .mini-card strong { display: block; color: var(--green-800); margin-bottom: 5px; }
+    .mini-card span { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    /* CTA + CONTACT */
+    .cta-band {
+      background: var(--green-800);
+      color: #fff;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.02;
+      margin-bottom: 13px;
+    }
+
+    .cta-inner p { color: #dcebd9; max-width: 690px; }
+
+    .cta-actions {
+      justify-self: end;
+      display: grid;
+      gap: 10px;
+      width: min(100%, 330px);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-card { padding: 28px; }
+    .contact-card h3 { color: var(--green-800); font-size: 24px; margin-bottom: 9px; }
+    .contact-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+
+    .contact-note {
+      margin-top: 14px;
+      color: #7b857c;
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--green-950);
+      color: #bed0bd;
+      padding: 28px 0;
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    footer strong { color: var(--leaf); }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a { text-decoration: none; font-size: 13px; }
+    .footer-links a:hover { color: #fff; }
+
+    .benefit { text-align: center; }
+    .benefit-icon { margin: 0 auto 17px; }
+    .contact-card { text-align: center; }
+    .contact-card .btn { margin-inline: auto; }
+    .contact-note { text-align: center; }
+    .evidence-content { text-align: center; }
+    .evidence-content h3 { margin-bottom: 10px; }
+    .mini-card { text-align: left; }
+    .source-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--green-600);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .source-link:hover { text-decoration: underline; }
+    .evidence-note {
+      display: block;
+      margin-top: 10px;
+      color: #7b857c;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    /* MOBILE NAV */
+    .mobile-bar { display: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      nav { display: none; }
+      .nav-cta { padding: 9px 12px; font-size: 12px; }
+
+      .hero-grid,
+      .problem-grid,
+      .product,
+      .evidence-grid,
+      .cta-inner { grid-template-columns: 1fr; }
+      .hero-card { justify-self: start; max-width: 350px; }
+      .benefits,
+      .process { grid-template-columns: repeat(2, 1fr); }
+      .cta-actions { justify-self: stretch; width: 100%; grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(var(--max), calc(100% - 24px)); }
+      section { padding: 68px 0; }
+      .nav-wrap { min-height: 68px; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-text { font-size: 18px; }
+      .hero { padding-top: 100px; text-align: center; }
+      .hero h1 { letter-spacing: -1.5px; }
+      .hero p { margin-inline: auto; }
+      .hero .buttons { justify-content: center; }
+      .eyebrow { margin-inline: auto; }
+
+      .buttons .btn { width: 100%; }
+      .two-col,
+      .contact-wrap,
+      .cta-actions { grid-template-columns: 1fr; }
+      .benefits,
+      .process { grid-template-columns: 1fr; }
+      .product-image { min-height: 300px; }
+      .evidence-mini { grid-template-rows: auto; }
+      .footer-wrap { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-card { display: none; }
+      .section-heading { margin-bottom: 32px; }
+      .info-card,
+      .solution-card,
+      .value-card,
+      .audience-card,
+      .evidence-content,
+      .contact-card { padding: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <header>
-        <div class="logo">
-            Green<span>Leaf</span> 🌿
-        </div>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio de GreenLeaf">
+        <img src="https://i.ibb.co/jp9zyjj/Dise-o-sin-t-tulo-9.png" alt="Logo de GreenLeaf">
+        <span class="brand-text">Green<span>Leaf</span></span>
+      </a>
 
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#beneficios">Beneficios</a>
-            <a href="#producto">Producto</a>
-            <a href="#proceso">Proceso</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+      <nav aria-label="Navegación principal">
+        <a href="#nosotros">Problema</a>
+        <a href="#solucion">Solución</a>
+        <a href="#valor">Valor</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#producto">Producto</a>
+        <a href="#evidencias">Evidencias</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
 
+      <a class="nav-cta" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">
+        Pedir por Instagram
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- INICIO -->
     <section class="hero" id="inicio">
-        <div class="hero-content">
-            <div class="badge">🌱 Una alternativa natural</div>
-
-            <h1>
-                El futuro<br>
-                <span>también se sirve.</span>
-            </h1>
-
-            <p>
-                Con GreenLeaf convertimos hojas de plátano en
-                platos biodegradables, creando una alternativa
-                natural para disfrutar tus alimentos mientras
-                cuidamos nuestro planeta.
-            </p>
-
-            <div class="buttons">
-                <a href="#producto" class="btn btn-primary">
-                    Descubre GreenLeaf
-                </a>
-
-                <a href="#contacto" class="btn btn-outline">
-                    Síguenos
-                </a>
-            </div>
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">🌱 Una alternativa nacida de la naturaleza</div>
+          <h1>El futuro<br><span>también se sirve.</span></h1>
+          <p>
+            GreenLeaf transforma hojas de plátano en platos biodegradables,
+            ofreciendo una alternativa natural para servir alimentos y
+            promover decisiones de consumo más responsables.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">🛒 Hacer pedido por Instagram</a>
+            <a class="btn btn-light" href="#producto">Conocer el producto</a>
+          </div>
         </div>
+
+        <div class="hero-card" aria-label="Presentación del producto GreenLeaf">
+          <img src="https://i.ibb.co/v6jLqSjD/f04c5191-3613-451f-8a2d-afcf6f1f1a28.jpg" alt="Plato biodegradable de GreenLeaf" loading="eager">
+          <div class="hero-card-caption">Prototipo / producto GreenLeaf elaborado a partir de hoja de plátano.</div>
+        </div>
+      </div>
     </section>
 
+    <!-- PROBLEMA -->
     <section id="nosotros">
-        <div class="problem">
-
-            <div class="problem-text">
-                <h2>Una idea que nace de la naturaleza</h2>
-
-                <p>
-                    Cada día utilizamos productos descartables
-                    que pueden generar una gran cantidad de residuos.
-                </p>
-
-                <p>
-                    GreenLeaf nace como una propuesta para aprovechar
-                    las hojas de plátano y transformarlas en una
-                    alternativa biodegradable para servir nuestros alimentos.
-                </p>
-
-                <p>
-                    Porque cuidar el planeta también puede empezar
-                    con algo tan sencillo como un plato.
-                </p>
-            </div>
-
-            <div class="problem-image"></div>
-
+      <div class="container">
+        <div class="section-heading">
+          <h2>Un problema que también vemos en Piura.</h2>
+          <p>
+            En Piura se generan cerca de <strong>2.000 toneladas mensuales de residuos no degradables</strong>,
+            principalmente plásticos de un solo uso. Su bajo nivel de reciclaje contribuye a la contaminación
+            del suelo, el agua y los ecosistemas.
+          </p>
         </div>
+
+        <div class="problem-grid">
+          <article class="info-card">
+            <h3>El problema</h3>
+            <p>
+              Los envases descartables de un solo uso son parte importante de este problema y requieren
+              alternativas que puedan reducir la dependencia de materiales convencionales.
+            </p>
+            <div class="problem-list">
+              <div class="problem-item"><span class="dot"></span><span>Alta generación de residuos descartables.</span></div>
+              <div class="problem-item"><span class="dot"></span><span>Solo una parte del plástico llega a ser reciclada.</span></div>
+              <div class="problem-item"><span class="dot"></span><span>Necesidad de opciones prácticas con menor impacto ambiental.</span></div>
+            </div>
+          </article>
+
+          <article class="solution-card" id="solucion">
+            <h3>Nuestra solución</h3>
+            <p>
+              Ofrecemos platos descartables elaborados a base de hoja de plátano, aprovechando
+              un recurso natural para crear una alternativa biodegradable frente a los platos descartables convencionales.
+            </p>
+            <div class="solution-steps">
+              <div class="solution-step"><strong>Material natural</strong><span>Usamos hoja de plátano como materia prima principal.</span></div>
+              <div class="solution-step"><strong>Preparación</strong><span>Las hojas se seleccionan, limpian y transforman para darles forma.</span></div>
+              <div class="solution-step"><strong>Alternativa</strong><span>Obtenemos un plato biodegradable para servir alimentos de manera diferente.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="benefits-section" id="beneficios">
+    <!-- PROPUESTA DE VALOR + PÚBLICO -->
+    <section class="soft-section" id="valor">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Más que un plato: una decisión consciente.</h2>
+          <p>
+            GreenLeaf une una presentación natural, una propuesta biodegradable y una experiencia
+            de compra sencilla por canales digitales.
+          </p>
+        </div>
 
-        <div class="section-title">
-            <h2>¿Por qué elegir GreenLeaf?</h2>
-
+        <div class="two-col">
+          <article class="value-card">
+            <h3>¿Qué nos diferencia?</h3>
             <p>
-                Diseñamos nuestros platos pensando en las personas
-                y en el ambiente.
+              Convertimos hojas de plátano en un producto funcional y visualmente atractivo,
+              ofreciendo una alternativa biodegradable, accesible y pensada para necesidades cotidianas.
             </p>
+            <div class="value-highlight">“Una alternativa natural para servir tus alimentos mientras promovemos hábitos más responsables.”</div>
+          </article>
+
+          <article class="audience-card">
+            <h3>Público objetivo</h3>
+            <p>
+              Nuestros principales clientes potenciales son negocios y personas que buscan una forma diferente
+              de servir alimentos y valoran alternativas con enfoque ambiental.
+            </p>
+            <div class="audience-tags">
+              <span class="tag">Restaurantes con delivery</span>
+              <span class="tag">Organizadores de eventos</span>
+              <span class="tag">Público ecoamigable</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-heading">
+          <h2>¿Por qué elegir GreenLeaf?</h2>
+          <p>Características que resumen el propósito de nuestro producto.</p>
         </div>
 
         <div class="benefits">
-
-            <div class="benefit">
-                <div class="icon">🌿</div>
-                <h3>Natural</h3>
-
-                <p>
-                    Elaborado a partir de hojas de plátano,
-                    aprovechando un recurso natural.
-                </p>
-            </div>
-
-            <div class="benefit">
-                <div class="icon">♻️</div>
-                <h3>Biodegradable</h3>
-
-                <p>
-                    Una alternativa diseñada para reducir
-                    el uso de materiales descartables convencionales.
-                </p>
-            </div>
-
-            <div class="benefit">
-                <div class="icon">💚</div>
-                <h3>Ecoamigable</h3>
-
-                <p>
-                    Una opción pensada para quienes quieren
-                    tomar decisiones más responsables.
-                </p>
-            </div>
-
-            <div class="benefit">
-                <div class="icon">🌎</div>
-                <h3>Sostenible</h3>
-
-                <p>
-                    Transformamos un recurso natural en un producto
-                    útil para nuestra vida cotidiana.
-                </p>
-            </div>
-
+          <article class="benefit"><div class="benefit-icon">🌿</div><h3>Natural</h3><p>Partimos de hojas de plátano como materia prima de nuestro producto.</p></article>
+          <article class="benefit"><div class="benefit-icon">♻️</div><h3>Biodegradable</h3><p>La propuesta busca ofrecer una alternativa frente a materiales descartables convencionales.</p></article>
+          <article class="benefit"><div class="benefit-icon">💚</div><h3>Ecoamigable</h3><p>Está pensada para personas interesadas en tomar decisiones de consumo más responsables.</p></article>
+          <article class="benefit"><div class="benefit-icon">🍽️</div><h3>Práctico</h3><p>Su función es sencilla: servir alimentos con una presentación diferente y natural.</p></article>
         </div>
+      </div>
     </section>
 
-    <section id="producto">
-
-        <div class="section-title">
-            <h2>Nuestro producto</h2>
-
-            <p>
-                Natural por fuera, sostenible en su propósito.
-            </p>
+    <!-- PRODUCTO -->
+    <section id="producto" class="soft-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Conoce nuestro plato biodegradable.</h2>
+          <p>Una alternativa natural para servir tus alimentos, con pedidos y reservas por Instagram.</p>
         </div>
 
         <div class="product">
+          <div class="product-image">
+            <img src="https://i.ibb.co/v6jLqSjD/f04c5191-3613-451f-8a2d-afcf6f1f1a28.jpg" alt="Producto GreenLeaf: plato biodegradable de hoja de plátano" loading="lazy">
+          </div>
 
-            <div class="product-image"></div>
-
-            <div class="product-info">
-                <h3>GreenLeaf</h3>
-
-                <p>
-                    Nuestros platos biodegradables están elaborados
-                    a base de hoja de plátano y están pensados para
-                    servir tus alimentos de una manera diferente.
-                </p>
-
-                <div class="price">S/ 15.00</div>
-
-                <div class="price-description">
-                    por docena
-                </div>
-
-                <a href="#contacto" class="btn btn-primary">
-                    Conoce más
-                </a>
+          <div class="product-info">
+            <div class="product-label">Producto GreenLeaf</div>
+            <h3>Plato biodegradable</h3>
+            <p>
+              Platos descartables elaborados a base de hoja de plátano. Son biodegradables y están pensados
+              como una alternativa frente a platos convencionales de polipropileno.
+            </p>
+            <div class="price">S/ 15.00</div>
+            <div class="price-note">Por docena · precio presentado en nuestro proyecto</div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">🛒 Pedir o reservar por Instagram</a>
             </div>
-
+          </div>
         </div>
+      </div>
     </section>
 
+    <!-- PROCESO -->
     <section id="proceso">
-
-        <div class="section-title">
-            <h2>De la hoja al plato</h2>
-
-            <p>
-                Una transformación que comienza con la naturaleza.
-            </p>
+      <div class="container">
+        <div class="section-heading">
+          <h2>De la hoja al plato.</h2>
+          <p>Así explicamos de forma sencilla cómo planteamos la transformación de nuestra materia prima.</p>
         </div>
 
         <div class="process">
-
-            <div class="step">
-                <div class="number">01</div>
-                <h3>Seleccionamos</h3>
-
-                <p>
-                    Elegimos cuidadosamente las hojas de plátano
-                    que utilizaremos.
-                </p>
-            </div>
-
-            <div class="step">
-                <div class="number">02</div>
-                <h3>Limpiamos</h3>
-
-                <p>
-                    Preparamos las hojas mediante un proceso
-                    de limpieza adecuado.
-                </p>
-            </div>
-
-            <div class="step">
-                <div class="number">03</div>
-                <h3>Transformamos</h3>
-
-                <p>
-                    Damos forma a las hojas para convertirlas
-                    en nuestros platos.
-                </p>
-            </div>
-
-            <div class="step">
-                <div class="number">04</div>
-                <h3>GreenLeaf</h3>
-
-                <p>
-                    Obtenemos un plato biodegradable listo
-                    para acompañar tus comidas.
-                </p>
-            </div>
-
+          <article class="step"><div class="step-number">01</div><h3>Seleccionamos</h3><p>Elegimos las hojas de plátano que cumplen las condiciones necesarias para el proyecto.</p></article>
+          <article class="step"><div class="step-number">02</div><h3>Limpiamos</h3><p>Preparamos las hojas mediante un proceso de limpieza adecuado antes de trabajarlas.</p></article>
+          <article class="step"><div class="step-number">03</div><h3>Transformamos</h3><p>Damos forma a las hojas para convertirlas en la estructura de nuestros platos.</p></article>
+          <article class="step"><div class="step-number">04</div><h3>Presentamos</h3><p>Obtenemos el producto final y lo presentamos como propuesta GreenLeaf.</p></article>
         </div>
+      </div>
     </section>
 
-    <section class="impact">
+    <!-- EVIDENCIAS -->
+    <section class="soft-section" id="evidencias">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Evidencias que respaldan nuestra propuesta.</h2>
+          <p>
+            Además de mostrar nuestro producto, reunimos referencias científicas que estudian el uso de hojas de plátano
+            y materiales derivados del banano en aplicaciones de empaque sostenible.
+          </p>
+        </div>
 
-        <h2>
-            Cambiar un plato<br>
-            puede cambiar mucho.
-        </h2>
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <img src="https://i.ibb.co/v6jLqSjD/f04c5191-3613-451f-8a2d-afcf6f1f1a28.jpg" alt="Fotografía del producto GreenLeaf: plato biodegradable de hoja de plátano" loading="lazy">
+            <div class="evidence-content">
+              <h3>Evidencia visual</h3>
+              <p>
+                Nuestro prototipo muestra cómo una hoja de plátano puede convertirse en una presentación de servicio
+                para alimentos. Esta evidencia visual se complementa con estudios sobre el comportamiento y el potencial
+                de las hojas de plátano como material de empaque.
+              </p>
+            </div>
+          </article>
 
-        <p>
-            GreenLeaf busca demostrar que nuestras decisiones
-            cotidianas pueden ser más sostenibles. Elegir una
-            alternativa biodegradable es un pequeño paso hacia
-            un futuro más responsable.
-        </p>
+          <div class="evidence-mini">
+            <article class="mini-card">
+              <strong>Estudio sobre hojas de plátano</strong>
+              <span>
+                Una investigación publicada en 2023 evaluó hojas de plátano procesadas para aplicaciones de empaque
+                alimentario y reportó mejoras en su resistencia al usar varias capas.
+              </span>
+              <a class="source-link" href="https://doi.org/10.1016/j.matpr.2023.02.256" target="_blank" rel="noopener noreferrer">Ver estudio científico ↗</a>
+            </article>
 
+            <article class="mini-card">
+              <strong>Material de origen vegetal</strong>
+              <span>
+                Una revisión publicada en 2026 señala que los subproductos del banano, incluidas las hojas,
+                contienen componentes lignocelulósicos y tienen potencial para aplicaciones de empaque sostenible.
+              </span>
+              <a class="source-link" href="https://doi.org/10.1016/j.tifs.2025.105452" target="_blank" rel="noopener noreferrer">Ver revisión científica ↗</a>
+            </article>
+
+            <article class="mini-card">
+              <strong>Una evidencia medible</strong>
+              <span>
+                La ciencia permite evaluar características como resistencia, biodegradabilidad y comportamiento del material;
+                por eso GreenLeaf presenta la propuesta como un proyecto en desarrollo y evita prometer propiedades no verificadas.
+              </span>
+              <span class="evidence-note">Fuentes: Materials Today: Proceedings (2023) y Trends in Food Science &amp; Technology (2026).</span>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="contact" id="contacto">
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          
+          <h2>Haz que tu próximo pedido también cuente.</h2>
+          <p>
+            Escríbenos para pedir, reservar una cantidad, consultar detalles o conocer mejor GreenLeaf.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">📸 Pedir / reservar por Instagram</a>
+          <a class="btn btn-light" href="https://mail.google.com/mail/?view=cm&fs=1&to=greenleafplatos@gmail.com&su=Consulta%20sobre%20GreenLeaf" target="_blank" rel="noopener noreferrer">✉️ Hacer una consulta por Gmail</a>
+        </div>
+      </div>
+    </section>
 
-        <div class="section-title">
-            <h2>Sé parte de GreenLeaf</h2>
+    <!-- CONTACTO + FEEDBACK -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Estamos a un clic de distancia.</h2>
+          <p>Elige el canal que necesites: pedidos y consultas por Instagram, consultas por Gmail o feedback mediante un formulario.</p>
+        </div>
 
+        <div class="contact-wrap">
+          <article class="contact-card">
+            <h3>Instagram</h3>
+            <p>Para pedidos, reservas, consultas rápidas y novedades de GreenLeaf.</p>
+            <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">Abrir Instagram</a>
+          </article>
+
+          <article class="contact-card">
+            <h3>Gmail</h3>
+            <p>Para consultas sobre el proyecto o el producto.</p>
+            <a class="btn btn-dark-outline" href="https://mail.google.com/mail/?view=cm&fs=1&to=greenleafplatos@gmail.com&su=Consulta%20sobre%20GreenLeaf" target="_blank" rel="noopener noreferrer">Enviar consulta por Gmail</a>
+          </article>
+
+          <article class="contact-card" style="grid-column: 1 / -1;">
+            <h3>Feedback del servicio</h3>
             <p>
-                Conoce nuestro proyecto, descubre nuestros productos
-                y acompáñanos en nuestro camino hacia un futuro más sostenible.
+              Usa este botón para llevar a tus clientes a una encuesta de Google Forms y conocer su opinión.
+              Cuando tengas tu formulario, reemplaza el enlace marcado en el código.
             </p>
+            <a id="feedback-link" class="btn btn-primary" href="https://forms.google.com/" target="_blank" rel="noopener noreferrer">📝 Dar feedback</a>
+            <div class="contact-note">En el código busca <strong>GOOGLE_FORM_URL</strong> para colocar el enlace de tu encuesta.</div>
+          </article>
         </div>
-
-        <div class="contact-box">
-            <h2>¡Síguenos!</h2>
-
-            <p>
-                Descubre nuestras novedades, conoce nuestro proceso
-                y acompáñanos en el proyecto GreenLeaf.
-            </p>
-
-            <div class="social-buttons">
-
-                <a
-                    href="https://www.instagram.com/greenleafplatos/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary"
-                >
-                    📸 Instagram
-                </a>
-
-<a
-    href="https://mail.google.com/mail/?view=cm&fs=1&to=greenleafplatos@gmail.com&su=Consulta%20sobre%20GreenLeaf"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="btn btn-outline"
-    style="color: #174c25; border-color: #174c25;"
->
-    ✉️ Gmail
-</a>
-
-            </div>
-        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>
-            © 2026 <strong>GreenLeaf</strong>
-            — Platos que cuidan el planeta 🌿
-        </p>
-    </footer>
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 <strong>GreenLeaf</strong> — Platos que cuidan el planeta.</p>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#producto">Producto</a>
+        <a href="#contacto">Contacto</a>
+        <a href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
 
+  <script>
+    const GOOGLE_FORM_URL = "https://forms.google.com/";
+    const feedbackLink = document.getElementById("feedback-link");
+
+    if (feedbackLink) {
+      feedbackLink.href = GOOGLE_FORM_URL;
+    }
+  </script>
 </body>
 </html>
