@@ -551,42 +551,6 @@
     .step h3 { color: var(--green-800); margin-bottom: 8px; font-size: 19px; }
     .step p { color: var(--muted); font-size: 14px; line-height: 1.65; }
 
-    /* EVIDENCE */
-    .evidence-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .evidence-card { overflow: hidden; }
-
-    .evidence-card img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      background: #deeadb;
-    }
-
-    .evidence-content { padding: 25px; }
-
-    .evidence-mini {
-      display: grid;
-      gap: 14px;
-      grid-template-rows: repeat(3, 1fr);
-    }
-
-    .mini-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(30,70,35,.06);
-    }
-
-    .mini-card strong { display: block; color: var(--green-800); margin-bottom: 5px; }
-    .mini-card span { color: var(--muted); font-size: 14px; line-height: 1.6; }
-
     /* CTA + CONTACT */
     .cta-band {
       background: var(--green-800);
@@ -655,8 +619,6 @@
     .contact-card { text-align: center; }
     .contact-card .btn { margin-inline: auto; }
     .contact-note { text-align: center; }
-    .evidence-content { text-align: center; }
-    .evidence-content h3 { margin-bottom: 10px; }
     .mini-card { text-align: left; }
     .source-link {
       display: inline-block;
@@ -675,32 +637,34 @@
       line-height: 1.55;
     }
 
+    /* CLASES AUXILIARES PARA IMÁGENES AÑADIDAS */
+    .section-img-slot {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 16px;
+    }
+
     /* MOBILE NAV */
     .mobile-bar { display: none; }
 
     /* RESPONSIVE */
-    @media (max-width: 1000px) {
-      nav { display: none; }
-      .nav-cta { padding: 9px 12px; font-size: 12px; }
-
-      .hero-grid,
-      .problem-grid,
-      .product,
-      .evidence-grid,
-      .cta-inner { grid-template-columns: 1fr; }
-      .hero-card { justify-self: start; max-width: 350px; }
-      .benefits,
-      .process { grid-template-columns: repeat(2, 1fr); }
-      .cta-actions { justify-self: stretch; width: 100%; grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 720px) {
+@media (max-width: 720px) {
       .container { width: min(var(--max), calc(100% - 24px)); }
       section { padding: 68px 0; }
       .nav-wrap { min-height: 68px; }
       .brand img { width: 42px; height: 42px; }
       .brand-text { font-size: 18px; }
       .hero { padding-top: 100px; text-align: center; }
+      
+      /* Invierte el orden en el hero para que la imagen salga arriba y el texto abajo */
+      .hero-grid {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 30px;
+      }
+      
       .hero h1 { letter-spacing: -1.5px; }
       .hero p { margin-inline: auto; }
       .hero .buttons { justify-content: center; }
@@ -713,29 +677,24 @@
       .benefits,
       .process { grid-template-columns: 1fr; }
       .product-image { min-height: 300px; }
-      .evidence-mini { grid-template-rows: auto; }
       .footer-wrap { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
     }
 
     @media (max-width: 420px) {
-      .hero-card { display: none; }
+      .hero-card { 
+        display: block; 
+        margin: 0 auto; 
+        width: 100%;
+      }
       .section-heading { margin-bottom: 32px; }
       .info-card,
       .solution-card,
       .value-card,
       .audience-card,
-      .evidence-content,
       .contact-card { padding: 22px; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-      }
-    }
   </style>
 </head>
 
@@ -803,6 +762,9 @@
 
         <div class="problem-grid">
           <article class="info-card">
+            <!-- ESPACIO DE IMAGEN: SECCIÓN PROBLEMA -->
+            <img class="section-img-slot" src="https://via.placeholder.com/500x300?text=Imagen+Problema" alt="Ilustración del problema de residuos">
+            
             <h3>El problema</h3>
             <p>
               Los envases descartables de un solo uso son parte importante de este problema y requieren
@@ -816,6 +778,9 @@
           </article>
 
           <article class="solution-card" id="solucion">
+            <!-- ESPACIO DE IMAGEN: SECCIÓN SOLUCIÓN -->
+            <img class="section-img-slot" src="https://via.placeholder.com/500x300?text=Imagen+Solucion" alt="Ilustración de la solución">
+            
             <h3>Nuestra solución</h3>
             <p>
               Ofrecemos platos descartables elaborados a base de hoja de plátano, aprovechando
@@ -844,6 +809,9 @@
 
         <div class="two-col">
           <article class="value-card">
+            <!-- ESPACIO DE IMAGEN: SECCIÓN VALOR -->
+            <img class="section-img-slot" src="https://via.placeholder.com/500x300?text=Imagen+Valor" alt="Ilustración de propuesta de valor">
+            
             <h3>¿Qué nos diferencia?</h3>
             <p>
               Convertimos hojas de plátano en un producto funcional y visualmente atractivo,
@@ -853,6 +821,9 @@
           </article>
 
           <article class="audience-card">
+            <!-- ESPACIO DE IMAGEN: SECCIÓN PÚBLICO OBJETIVO -->
+            <img class="section-img-slot" src="https://via.placeholder.com/500x300?text=Imagen+Publico+Objetivo" alt="Ilustración del público objetivo">
+
             <h3>Público objetivo</h3>
             <p>
               Nuestros principales clientes potenciales son negocios y personas que buscan una forma diferente
@@ -933,7 +904,7 @@
     </section>
 
     <!-- EVIDENCIAS -->
-<section class="soft-section" id="evidencias">
+    <section class="soft-section" id="evidencias">
       <div class="container">
         <div class="section-heading">
           <h2>Evidencias que respaldan nuestra propuesta</h2>
@@ -941,6 +912,11 @@
             Reunimos referencias científicas que estudian el uso de hojas de plátano
             y materiales derivados del banano en aplicaciones de empaque sostenible.
           </p>
+        </div>
+
+        <!-- ESPACIO DE IMAGEN: SECCIÓN EVIDENCIAS -->
+        <div style="margin-bottom: 2rem;">
+          <img class="section-img-slot" src="https://via.placeholder.com/1000x300?text=Imagen+General+Evidencias" alt="Imagen de evidencias científicas" style="max-height: 350px; object-fit: cover;">
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
@@ -973,7 +949,6 @@
     <section class="cta-band">
       <div class="container cta-inner">
         <div>
-          
           <h2>Haz que tu próximo pedido también cuente.</h2>
           <p>
             Escríbenos para pedir, reservar una cantidad, consultar detalles o conocer mejor GreenLeaf.
