@@ -650,21 +650,33 @@
     .mobile-bar { display: none; }
 
     /* RESPONSIVE */
-@media (max-width: 720px) {
+  @media (max-width: 1000px) {
+      nav { display: none; }
+      .nav-wrap .nav-cta { display: none; }
+      .nav-cta { padding: 9px 12px; font-size: 12px; }
+
+      .hero-grid,
+      .problem-grid,
+      .product,
+      .cta-inner { grid-template-columns: 1fr; }
+      .hero-card { justify-self: start; max-width: 350px; }
+      .benefits,
+      .process { grid-template-columns: repeat(2, 1fr); }
+      .cta-actions { justify-self: stretch; width: 100%; grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
       .container { width: min(var(--max), calc(100% - 24px)); }
       section { padding: 68px 0; }
       .nav-wrap { min-height: 68px; }
       .brand img { width: 42px; height: 42px; }
       .brand-text { font-size: 18px; }
       .hero { padding-top: 100px; text-align: center; }
-      
-      /* Invierte el orden en el hero para que la imagen salga arriba y el texto abajo */
       .hero-grid {
         display: flex;
         flex-direction: column-reverse;
         gap: 30px;
       }
-      
       .hero h1 { letter-spacing: -1.5px; }
       .hero p { margin-inline: auto; }
       .hero .buttons { justify-content: center; }
