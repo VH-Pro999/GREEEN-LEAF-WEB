@@ -272,12 +272,6 @@
       background: var(--green-700);
     }
 
-    .hero-card-caption {
-      padding: 14px 5px 3px;
-      color: #eaf4e8;
-      font-size: 13px;
-    }
-
     /* COMMON SECTION */
     section { padding: 88px 0; }
 
@@ -776,7 +770,7 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">🌱 Una alternativa nacida de la naturaleza</div>
+          <div class="eyebrow">Una alternativa nacida de la naturaleza</div>
           <h1>El futuro<br><span>también se sirve.</span></h1>
           <p>
             GreenLeaf transforma hojas de plátano en platos biodegradables,
@@ -784,14 +778,13 @@
             promover decisiones de consumo más responsables.
           </p>
           <div class="buttons">
-            <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">🛒 Hacer pedido por Instagram</a>
+            <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">Hacer pedido por Instagram</a>
             <a class="btn btn-light" href="#producto">Conocer el producto</a>
           </div>
         </div>
 
         <div class="hero-card" aria-label="Presentación del producto GreenLeaf">
-          <img src="https://i.ibb.co/v6jLqSjD/f04c5191-3613-451f-8a2d-afcf6f1f1a28.jpg" alt="Plato biodegradable de GreenLeaf" loading="eager">
-          <div class="hero-card-caption">Prototipo / producto GreenLeaf elaborado a partir de hoja de plátano.</div>
+          <img src="https://i.ibb.co/nqtbkk6z/Dise-o-sin-t-tulo-9.png" alt="Plato biodegradable de GreenLeaf" loading="eager">
         </div>
       </div>
     </section>
@@ -915,7 +908,7 @@
             <div class="price">S/ 15.00</div>
             <div class="price-note">Por docena · precio presentado en nuestro proyecto</div>
             <div class="buttons">
-              <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">🛒 Pedir o reservar por Instagram</a>
+              <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">Pedir o reservar por Instagram</a>
             </div>
           </div>
         </div>
@@ -940,57 +933,49 @@
     </section>
 
     <!-- EVIDENCIAS -->
-    <section class="soft-section" id="evidencias">
+<section class="soft-section" id="evidencias">
       <div class="container">
         <div class="section-heading">
-          <h2>Evidencias que respaldan nuestra propuesta.</h2>
+          <h2>Evidencias que respaldan nuestra propuesta</h2>
           <p>
-            Además de mostrar nuestro producto, reunimos referencias científicas que estudian el uso de hojas de plátano
+            Reunimos referencias científicas que estudian el uso de hojas de plátano
             y materiales derivados del banano en aplicaciones de empaque sostenible.
           </p>
         </div>
 
-        <div class="evidence-grid">
-          <article class="evidence-card">
-            <img src="https://i.ibb.co/v6jLqSjD/f04c5191-3613-451f-8a2d-afcf6f1f1a28.jpg" alt="Fotografía del producto GreenLeaf: plato biodegradable de hoja de plátano" loading="lazy">
-            <div class="evidence-content">
-              <h3>Evidencia visual</h3>
-              <p>
-                Nuestro prototipo muestra cómo una hoja de plátano puede convertirse en una presentación de servicio
-                para alimentos. Esta evidencia visual se complementa con estudios sobre el comportamiento y el potencial
-                de las hojas de plátano como material de empaque.
-              </p>
-            </div>
-          </article>
-
-          <div class="evidence-mini">
-            <article class="mini-card">
-              <strong>Estudio sobre hojas de plátano</strong>
-              <span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          <article class="mini-card" style="background: var(--bg-card, #fff); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">Estudio sobre hojas de plátano</strong>
+              <span style="display: block; margin-bottom: 1rem; color: var(--text-muted, #555);">
                 Una investigación publicada en 2023 evaluó hojas de plátano procesadas para aplicaciones de empaque
                 alimentario y reportó mejoras en su resistencia al usar varias capas.
               </span>
-              <a class="source-link" href="https://doi.org/10.1016/j.matpr.2023.02.256" target="_blank" rel="noopener noreferrer">Ver estudio científico ↗</a>
-            </article>
+            </div>
+            <a class="source-link" href="https://doi.org/10.1016/j.matpr.2023.02.256" target="_blank" rel="noopener noreferrer">Ver estudio científico ↗</a>
+          </article>
 
-            <article class="mini-card">
-              <strong>Material de origen vegetal</strong>
-              <span>
+          <article class="mini-card" style="background: var(--bg-card, #fff); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">Material de origen vegetal</strong>
+              <span style="display: block; margin-bottom: 1rem; color: var(--text-muted, #555);">
                 Una revisión publicada en 2026 señala que los subproductos del banano, incluidas las hojas,
                 contienen componentes lignocelulósicos y tienen potencial para aplicaciones de empaque sostenible.
               </span>
-              <a class="source-link" href="https://doi.org/10.1016/j.tifs.2025.105452" target="_blank" rel="noopener noreferrer">Ver revisión científica ↗</a>
-            </article>
+            </div>
+            <a class="source-link" href="https://doi.org/10.1016/j.tifs.2025.105452" target="_blank" rel="noopener noreferrer">Ver revisión científica ↗</a>
+          </article>
 
-            <article class="mini-card">
-              <strong>Una evidencia medible</strong>
-              <span>
+          <article class="mini-card" style="background: var(--bg-card, #fff); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">Una evidencia medible</strong>
+              <span style="display: block; margin-bottom: 1rem; color: var(--text-muted, #555);">
                 La ciencia permite evaluar características como resistencia, biodegradabilidad y comportamiento del material;
                 por eso GreenLeaf presenta la propuesta como un proyecto en desarrollo y evita prometer propiedades no verificadas.
               </span>
-              <span class="evidence-note">Fuentes: Materials Today: Proceedings (2023) y Trends in Food Science &amp; Technology (2026).</span>
-            </article>
-          </div>
+            </div>
+            <span class="evidence-note" style="font-size: 0.85rem; opacity: 0.8;">Fuentes: Materials Today: Proceedings (2023) y Trends in Food Science &amp; Technology (2026).</span>
+          </article>
         </div>
       </div>
     </section>
@@ -1006,8 +991,8 @@
           </p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">📸 Pedir / reservar por Instagram</a>
-          <a class="btn btn-light" href="https://mail.google.com/mail/?view=cm&fs=1&to=greenleafplatos@gmail.com&su=Consulta%20sobre%20GreenLeaf" target="_blank" rel="noopener noreferrer">✉️ Hacer una consulta por Gmail</a>
+          <a class="btn btn-primary" href="https://www.instagram.com/greenleafplatos/" target="_blank" rel="noopener noreferrer">Pedir / reservar por Instagram</a>
+          <a class="btn btn-light" href="https://mail.google.com/mail/?view=cm&fs=1&to=greenleafplatos@gmail.com&su=Consulta%20sobre%20GreenLeaf" target="_blank" rel="noopener noreferrer">Hacer una consulta por Gmail</a>
         </div>
       </div>
     </section>
